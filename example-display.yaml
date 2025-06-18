@@ -30,11 +30,11 @@ logger:
 # Enable Home Assistant API
 api:
   encryption:
-    key: ""
+    key: !secret display_key
 
 ota:
   - platform: esphome
-    password: ""
+    password: !secret display_ota
 
 wifi:
   ssid: !secret wifi_ssid
@@ -43,12 +43,16 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Example-Display Fallback Hotspot"
-    password: ""
+    password: !secret display_ap
 
 captive_portal:
 
 
-
+image:
+  - file: "weather.gif"
+    id: weather_pic
+    type: RGB565
+    
 
 lvgl:
   theme:
@@ -74,7 +78,7 @@ lvgl:
 
         - image:
             align: TOP_LEFT
-            src: wether_pic
+            src: weather_pic
             id: img_id
          
 
